@@ -1,0 +1,131 @@
+/* IMPORTS */
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Schoolbell&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Belleza&display=swap');
+
+/* GLOBAL */
+*{
+	padding: 0px;
+	margin: 0px;
+	box-sizing: border-box;
+}
+
+a{
+	text-decoration: none;
+	color:inherit
+}
+
+.background{
+	background-image: linear-gradient(225deg, #0047A0, #CD2E3A);
+	background-size: 1000%;
+	height: 100vh; width: 100%;
+	animation: backgroundMove 20s infinite;
+}
+
+/* NAVIGATION BAR */
+.nav-container{
+	font-family: 'Montserrat', sans-serif;
+	height: 10vh; width: 100%;
+	padding: 0;
+	background-color: #edf0f1;
+	display: flex;
+	list-style-type:none;
+	color: #24252A;
+	justify-content: space-around;
+	align-items: center;
+	box-shadow: 0 4px 2px -2px rgba(0,0,0, 0.5);
+}
+
+.side-nav{
+	font-size: 20px;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+#main-title{
+	font-size: 25px;
+	font-weight: bold;
+	opacity: 0.7;
+	transition: all 0.3s ease;
+}
+
+#main-title:hover{
+	opacity: 1;
+}
+
+.side-nav li{
+	padding: 1em;
+	opacity: 0.7;
+	transition: all 0.3s ease;
+	border-radius: 5px;
+}
+
+.side-nav a:first-child{
+	border-radius: 5px;
+	color: rgb(61, 87, 238);
+}
+
+.side-nav li:hover{
+	opacity: 1;
+	color: rgb(47,150,163);
+	background: rgb(173, 171, 171);
+}
+
+.side-nav li:active{
+	color: rgb(48,62,143);
+	background: rgba(211, 211, 211, 0.755);
+}
+
+
+
+/* MAIN SECTION*/
+.content-home{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: space-between;
+	
+}
+
+.content-img{
+	height: 200px; width: 100%;
+	background: url("./images/skflag.gif") no-repeat center center scroll;
+	background-size: 10%;
+}
+
+h1{
+	font-size: 50px;
+	text-align: center;
+	font-family: 'Schoolbell', cursive;
+	-webkit-text-fill-color: black;
+	-webkit-text-stroke-color: #edf0f1;
+	-webkit-text-stroke-width: 0.2px;
+}
+
+p{
+	font-size: 18px;
+	color: #edf0f1;
+	text-align: center;
+	flex-basis: 40%;
+	padding: 5em 20em;
+	font-family: 'Belleza', sans-serif;
+}
+
+/* FOOTER */
+footer p{
+	font-size: 10px;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: transparent;
+	color: white;
+	text-align: center;
+	font-family: 'Belleza', sans-serif;
+}
+
+/* ANIMATIONS */
+@keyframes backgroundMove{
+    50% {background-position: 100% 0%;}
+}
+
