@@ -1,35 +1,86 @@
+/* GLOBAL */
+input{
+    width: 20rem; height: 2rem;
+    opacity: 0.33   ;
+    border-radius: 5px;
+}
 /* PLAY SCREEN */
-.play-svg{
+#hanger,
+#hanger-body{
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 35%;
     transform: translate(-50%, -50%);
-    animation: fill-text 0.5s ease forwards 3.2s;
 }
 
+#hanger-body{
+    transform: translate(-100%, -50%);
+}
+
+#hanger path,
+#hanger-body path{
+    fill-opacity: 0;
+}
+
+/* ㅡ */
 #hanger path:nth-child(1){
-	stroke-dasharray: 200px;
-    stroke-dashoffset: 200px;
+    stroke-dasharray: 526.303955078125px;
+    stroke-dashoffset: 526.303955078125px;
 }
 
+/* ㄱ */
 #hanger path:nth-child(2){
-	stroke-dasharray: 20px;
-	stroke-dashoffset: 2414.4580078125px;
+    stroke-dasharray: 676.9739990234375px;
+    stroke-dashoffset: 676.9739990234375px;
+}
+
+/* ㅇ */
+#hanger-body path:nth-child(1){
+    stroke-dasharray: 144.60743713378906px;
+    stroke-dashoffset: 144.60743713378906px;
+}
+
+#hanger-body path:nth-child(2){
+    stroke-dasharray: 229.46240234375px;
+    stroke-dashoffset: 229.46240234375px;
+}
+
+/* ㅜ */
+#hanger-body path:nth-child(3){
+    stroke-dasharray: 286.11907958984375px;
+    stroke-dashoffset: 286.11907958984375px;
+}
+
+/* ㅅ */
+#hanger-body path:nth-child(4){
+    stroke-dasharray: 260.660888671875px;
+    stroke-dashoffset: 260.660888671875px;
+}
+
+#hanger path{
+    animation: fill-text 2s ease forwards;
+}
+
+/* TEXT INPUT */
+
+#guess-input{
+    position: absolute;
+    top: 50%;
+    left: 65%;
+    transform: translate(-50%, -50%);
+    
 }
 
 /* ANIMATION */
 
-@keyframes stokeAnimation{
+@keyframes strokeAnimation{
 	to{
 		stroke-dashoffset: 0;
 	}
 }
 
 @keyframes fill-text{
-    from{
-    	fill: 0;
-    }
     to{
-        fill:white;
+        opacity: 0.3;
     }
 }
