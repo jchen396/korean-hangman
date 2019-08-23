@@ -138,6 +138,8 @@ footer p{
     50% {background-position: 100% 0%;}
 }
 
+
+/* MEDIA */
 @media screen and (max-width: 800px){
 	.main-text{
 		text-align: none;

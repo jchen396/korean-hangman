@@ -1,0 +1,35 @@
+/* PLAY SCREEN */
+.play-svg{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: fill-text 0.5s ease forwards 3.2s;
+}
+
+#hanger path:nth-child(1){
+	stroke-dasharray: 200px;
+    stroke-dashoffset: 200px;
+}
+
+#hanger path:nth-child(2){
+	stroke-dasharray: 20px;
+	stroke-dashoffset: 2414.4580078125px;
+}
+
+/* ANIMATION */
+
+@keyframes stokeAnimation{
+	to{
+		stroke-dashoffset: 0;
+	}
+}
+
+@keyframes fill-text{
+    from{
+    	fill: 0;
+    }
+    to{
+        fill:white;
+    }
+}
