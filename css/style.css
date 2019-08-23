@@ -29,6 +29,7 @@ a{
 	padding: 0;
 	background-color: #edf0f1;
 	display: flex;
+	flex-wrap: wrap;
 	list-style-type:none;
 	color: #24252A;
 	justify-content: space-around;
@@ -39,7 +40,7 @@ a{
 .side-nav{
 	font-size: 20px;
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: space-around;
 }
 
 #main-title{
@@ -63,6 +64,7 @@ a{
 .side-nav a:first-child{
 	border-radius: 5px;
 	color: rgb(61, 87, 238);
+	padding: 0 2em;
 }
 
 .side-nav li:hover{
@@ -140,9 +142,18 @@ footer p{
 
 
 /* MEDIA */
-@media screen and (max-width: 800px){
+@media screen and (max-width: 1000px){
 	.main-text{
 		text-align: none;
 		padding: 1em 20%;
+	}
+	.side-nav li:hover{
+		background: none;
+	}
+	.side-nav li{
+		padding: 0 2em;
+	}
+	.side-nav a:first-child{
+		padding: 0;
 	}
 }

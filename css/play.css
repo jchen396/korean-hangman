@@ -1,10 +1,22 @@
 /* GLOBAL */
+@import url('https://fonts.googleapis.com/css?family=Belleza&display=swap');
+
 input{
     width: 20rem; height: 2rem;
     opacity: 0.33   ;
     border-radius: 5px;
 }
 /* PLAY SCREEN */
+.play-screen{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.display-container{
+    width: 240px; height: 200px;
+}
+
 #hanger,
 #hanger-body{
     position: absolute;
@@ -19,7 +31,7 @@ input{
 
 #hanger path,
 #hanger-body path{
-    fill-opacity: 0;
+    fill-opacity: 1;
 }
 
 /* ㅡ */
@@ -57,18 +69,31 @@ input{
     stroke-dashoffset: 260.660888671875px;
 }
 
-#hanger path{
+#hanger path,
+#hanger-body path{
     animation: fill-text 2s ease forwards;
 }
 
 /* TEXT INPUT */
-
-#guess-input{
+.input-container{
+    display: flex;
+    flex-direction: column;
     position: absolute;
     top: 50%;
     left: 65%;
     transform: translate(-50%, -50%);
-    
+}
+
+#text-area{
+}
+
+#error-text{
+    padding: 0.25em;
+    font-size: 12px;
+    font-family: 'Belleza', sans-serif;
+    transition: all 0.3s ease-in-out;
+    color: darkgray;
+    opacity: 0;
 }
 
 /* ANIMATION */
@@ -82,5 +107,27 @@ input{
 @keyframes fill-text{
     to{
         opacity: 0.3;
+    }
+}
+
+/* MEDIA */
+@media screen and (max-width: 800px){
+    #hanger,
+    #hanger-body{
+        position: absolute;
+        top: 33%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    #hanger-body{
+        transform: translate(-100%, -50%);
+    }
+    .input-container{
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 66%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 }
