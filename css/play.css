@@ -92,7 +92,7 @@ input{
     font-size: 12px;
     font-family: 'Belleza', sans-serif;
     transition: all 0.3s ease-in-out;
-    color: darkgray;
+    color: red;
     opacity: 0;
 }
 
