@@ -1,7 +1,4 @@
-let textAppear = () => {
-    let mainText = document.querySelector(".main-text");
-    mainText.classList.add('text-appear');
-    console.log("works");
-}
+const wordList = require('./fileRead.js');
 
-window.addEventListener("load", textAppear);
+
+console.log(wordList);

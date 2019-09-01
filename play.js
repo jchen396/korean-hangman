@@ -1,5 +1,4 @@
-const fs = require('fs');
-
+const wordList = require('./fileRead.js');
 const hanger = document.querySelectorAll('#hanger path');
 const hangBody = document.querySelectorAll('#hanger-body path');
 const hangulRegex = /[\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]/g;
@@ -16,11 +15,7 @@ hangBody.forEach((element, index) =>{
 })
 
 // Reading and inputting korean words from a text file
-fs.readFile("./koreanWords.txt", () => {
-    if(err){
-        throw err;
-    }
-})
+
 
 // Check for language type
 textArea.addEventListener("input", () => {
@@ -36,3 +31,5 @@ textArea.addEventListener("input", () => {
         }, 2000)
     }
 })
+
+console.log(wordList.data[1]);
