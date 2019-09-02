@@ -1,6 +1,7 @@
 const wordList = require('./fileRead.js');
 const hanger = document.querySelectorAll('#hanger path');
 const hangBody = document.querySelectorAll('#hanger-body path');
+const textShow = document.querySelector('#text-show');
 const hangulRegex = /[\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff]/g;
 let textArea = document.querySelector('#guess-input');
 let errorText = document.querySelector('#error-text');
@@ -15,8 +16,8 @@ hangBody.forEach((element, index) =>{
 })
 
 // Reading and inputting korean words from a text file
-
-
+let guessString = wordList.then();
+textShow.innerHTML = "hi";
 // Check for language type
 textArea.addEventListener("input", () => {
     
@@ -31,5 +32,3 @@ textArea.addEventListener("input", () => {
         }, 2000)
     }
 })
-
-console.log(wordList.data[1]);

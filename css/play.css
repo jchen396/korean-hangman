@@ -84,6 +84,12 @@ input{
     transform: translate(-50%, -50%);
 }
 
+#text-show{
+    margin-bottom: 1em;
+    justify-content: center;
+    align-items: center;
+}
+
 #text-area{
 }
 
