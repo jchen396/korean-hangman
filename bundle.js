@@ -12,6 +12,7 @@ randomWord = (hangulList[Math.floor(Math.random() * 1001)])
 module.exports = randomWord;
 },{}],2:[function(require,module,exports){
 const wordList = require('./fileRead.js');
+let gameStatus = 0;
 
 //display side variables
 const hanger = document.querySelectorAll('#hanger path');
@@ -44,17 +45,15 @@ for(let i = 0; i < koreanWord.length; i++){
     textAnswer.innerHTML += "_ ";
 }
 console.log(`${koreanWord}'s length is ${koreanWord.length}`);
+console.log(textArea.value);
 
 // Check for language type
 textArea.addEventListener("input", () => {
     
     console.log(textArea.value.match(hangulRegex));
     if(textArea.value.match(hangulRegex)){
-        submitForm.addEventListener("submit", (data) => {
-            if(koreanWord === textArea.value){
-                console.log(data);
-            }
-        })
+        submitForm.addEventListener('submit', wordCheck());
+        announceStatus();
     }else{
         errorText.style.opacity = "1";
         errorText.innerHTML = "*Please enter Korean characters";
@@ -64,5 +63,21 @@ textArea.addEventListener("input", () => {
     }
 })
 
+// Validate guess with answer with functions
+let wordCheck = () => {
+    if(koreanWord === textArea.value){
+        gameStatus = 1;
+    }else{
+        gameStatus = 0;
+    }
+};
 
+let announceStatus = () => {
+    if(gameStatus === 1){
+        console.log("CORRECT");
+        textAnswer.innerHTML = koreanWord;
+    }else{
+        console.log("ERROR");
+    }
+};
 },{"./fileRead.js":1}]},{},[2]);
