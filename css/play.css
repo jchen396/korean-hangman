@@ -4,7 +4,7 @@
 
 input{
     width: 20rem; height: 2rem;
-    opacity: 0.33   ;
+    opacity: 0.33;
     border-radius: 5px;
 }
 /* PLAY SCREEN */
@@ -87,22 +87,23 @@ input{
 
 /* TEXT INPUT */
 .input-container{
+    width: 20rem; height: 2rem;
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 50%;
     left: 65%;
     transform: translate(-50%, -50%);
+    justify-content: space-around;
+    align-items: space-around;
 }
 
 #text-show{
     font-family: 'Schoolbell', cursive;    
     margin-bottom: 1em;
-    justify-content: center;  
-    align-items: center;
     color: #edf0f1;
     opacity: 0.8;
-    align-self: center;
+    text-align: initial;
 }
 
 #error-text{
@@ -148,8 +149,13 @@ input{
         display: flex;
         flex-direction: column;
         position: absolute;
+        align-content: center;
+        align-items: center;
         top: 66%;
         left: 50%;
         transform: translate(-50%, -50%);
+    }
+    #text-show{
+        align-self: center;
     }
 }

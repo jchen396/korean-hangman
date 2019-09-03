@@ -7,11 +7,9 @@ let stream = " 것           \t A thing or  an object\r\n 하다          \t To 
 
 //string manipulation to fill the array properly
 hangulList = stream.split('\n');
-randomWord = (hangulList[Math.floor(Math.random() * 1001)])
-
-module.exports = randomWord;
+module.exports = hangulList;
 },{}],2:[function(require,module,exports){
-const wordList = require('./fileRead.js');
+let wordList = require('./fileRead.js');
 let gameStatus = 0;
 
 //display side variables
@@ -37,22 +35,34 @@ hangBody.forEach((element, index) =>{
 })
 
 // Reading and inputting korean words from a text file
-let guessWord = wordList.split('\t').map(item => item.trim());
-let englishWord = guessWord[1].replace(/,/g, ', ');
-let koreanWord = guessWord[0];
-textShow.innerHTML = englishWord;
-for(let i = 0; i < koreanWord.length; i++){
-    textAnswer.innerHTML += "_ ";
+
+let koreanWord; //the korean word
+let englishWord; //definition of korean word in english
+let guessWord; //value of your input
+let randomWord; //random word generated from the array
+getWord = () =>{
+    randomWord = wordList[Math.floor(Math.random() * 1001)];
+    guessWord = randomWord.split('\t').map(item => item.trim());
+    englishWord = guessWord[1].replace(/,/g, ', ');
+    koreanWord = guessWord[0];
+    submitForm.reset();
+    textArea.value = "";
+    textShow.innerHTML = englishWord;
+    textAnswer.innerHTML = "";
+    for(let i = 0; i < koreanWord.length; i++){
+        textAnswer.innerHTML += "_ ";
+    }
+    console.log(`${koreanWord}'s length is ${koreanWord.length}`);
+    console.log(textArea.value);
 }
-console.log(`${koreanWord}'s length is ${koreanWord.length}`);
-console.log(textArea.value);
+getWord();
 
 // Check for language type
 textArea.addEventListener("input", () => {
     
     console.log(textArea.value.match(hangulRegex));
     if(textArea.value.match(hangulRegex)){
-        submitForm.addEventListener('submit', wordCheck());
+        submitForm.addEventListener('submit', wordCheck(), false);
         announceStatus();
     }else{
         errorText.style.opacity = "1";
@@ -76,6 +86,7 @@ let announceStatus = () => {
     if(gameStatus === 1){
         console.log("CORRECT");
         textAnswer.innerHTML = koreanWord;
+        setTimeout(getWord, 2000);
     }else{
         console.log("ERROR");
     }
