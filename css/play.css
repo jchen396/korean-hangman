@@ -50,11 +50,13 @@ input{
 #hanger-body path:nth-child(1){
     stroke-dasharray: 144.60743713378906px;
     stroke-dashoffset: 144.60743713378906px;
+    fill-opacity: 0;
 }
 
 #hanger-body path:nth-child(2){
     stroke-dasharray: 229.46240234375px;
     stroke-dashoffset: 229.46240234375px;
+    fill-opacity: 1;
 }
 
 /* ㅜ */
@@ -90,7 +92,10 @@ input{
     align-items: center;
 }
 
-#text-area{
+#text-show{
+    color: #edf0f1;
+    font-size: 30px;
+    opacity: 0.8;
 }
 
 #error-text{

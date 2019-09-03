@@ -1,0 +1,25 @@
+{
+  "name": "koreanhangman",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "brfs": "^2.0.2",
+    "browserify-fs": "^1.0.0",
+    "uniq": "^1.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jchen396/koreanHangman.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jchen396/koreanHangman/issues"
+  },
+  "homepage": "https://github.com/jchen396/koreanHangman#readme"
+}

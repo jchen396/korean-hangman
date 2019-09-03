@@ -15,9 +15,6 @@ hangBody.forEach((element, index) =>{
     console.log(`letter ${index+1} is ${element.getTotalLength()}`);
 })
 
-// Reading and inputting korean words from a text file
-let guessString = wordList.then();
-textShow.innerHTML = "hi";
 // Check for language type
 textArea.addEventListener("input", () => {
     
@@ -32,3 +29,10 @@ textArea.addEventListener("input", () => {
         }, 2000)
     }
 })
+
+// Reading and inputting korean words from a text file
+let guessWord = wordList.split('\t').map(item => item.trim());
+englishWord = guessWord[1];
+koreanWord = guessWord[0];
+textShow.innerHTML = englishWord;
+console.log(`${koreanWord}'s length is ${koreanWord.length}`);
