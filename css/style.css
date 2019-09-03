@@ -89,7 +89,7 @@ a{
 	width: 10%;
 	padding-bottom: 2px;
 	border-bottom: #24252A 1px solid;
-	animation: navUnderline 0.3s ease-in-out forwards;
+	animation: navUnderline 0.2s ease-out forwards;
 	align-content: space-between;
 }
 

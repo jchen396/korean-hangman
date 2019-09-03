@@ -1,5 +1,6 @@
 /* GLOBAL */
 @import url('https://fonts.googleapis.com/css?family=Belleza&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Schoolbell&display=swap');
 
 input{
     width: 20rem; height: 2rem;
@@ -27,6 +28,14 @@ input{
 
 #hanger-body{
     transform: translate(-100%, -50%);
+}
+
+#text-answer{
+    font-size: 60px;
+    position: absolute;
+    top: 20%;
+    left: 35%;
+    transform: translate(-50%, 50%);
 }
 
 #hanger path,
@@ -87,15 +96,13 @@ input{
 }
 
 #text-show{
+    font-family: 'Schoolbell', cursive;    
     margin-bottom: 1em;
-    justify-content: center;
+    justify-content: center;  
     align-items: center;
-}
-
-#text-show{
     color: #edf0f1;
-    font-size: 30px;
     opacity: 0.8;
+    align-self: center;
 }
 
 #error-text{
@@ -122,16 +129,20 @@ input{
 }
 
 /* MEDIA */
-@media screen and (max-width: 800px){
+@media screen and (max-width: 1000px){
     #hanger,
     #hanger-body{
         position: absolute;
-        top: 33%;
+        top: 40%;
         left: 50%;
         transform: translate(-50%, -50%);
     }
     #hanger-body{
         transform: translate(-100%, -50%);
+    }
+    #text-answer{
+        top: 18%; left: 50%;
+        transform: translate(-50%, -50%);
     }
     .input-container{
         display: flex;
