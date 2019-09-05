@@ -37,9 +37,9 @@ let getWord = () =>{
     englishWord = guessWord[1].replace(/,/g, ', ');
     koreanWord = guessWord[0];
     submitForm.reset();
+    textAnswer.innerHTML = "";
     textArea.value = "";
     textShow.innerHTML = englishWord;
-    textAnswer.innerHTML = "";
     for(let i = 0; i < koreanWord.length; i++){
         textAnswer.innerHTML += "_ ";
     }
@@ -108,9 +108,24 @@ let drawSVG = () => {
             hangBody[2].classList.add("fill-class");
             hangBody[2].style.fillOpacity = '1';
             break;
-        case 5:
+        case 5: //LOSING STAGE
+            console.log("LOST")
+            endMessage = `YOU LOST WITH ${gameScore} POINTS`;
             hangBody[3].classList.add("fill-class");
             hangBody[3].style.fillOpacity = '1';
+            textAnswer.innnerHTML = endMessage;
+            setTimeout(() => {
+                wrongScore = 0, gameScore = 0;
+                getWord();
+                hangBody.forEach((element) =>{
+                    element.classList.remove("fill-class");
+                    element.style.fillOpacity = '0';  
+                });              
+                hanger.forEach((element) => {
+                    element.classList.remove("fill-class");
+                    element.style.fillOpacity = '0';
+                });
+            }, 2000);
             break;    
     }
 }
