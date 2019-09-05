@@ -124,8 +124,10 @@ let drawSVG = () => {
             endMessage = `YOU LOST WITH ${gameScore} POINTS`;
             hangBody[3].classList.add("fill-class");
             hangBody[3].style.fillOpacity = '1';
-            textAnswer.innnerHTML = endMessage;
+            textAnswer.innerHTML  = endMessage;
+            textAnswer.style.fontSize = '20px';
             setTimeout(() => {
+                textAnswer.style.fontSize = '50px';
                 wrongScore = 0, gameScore = 0;
                 getWord();
                 hangBody.forEach((element) =>{
