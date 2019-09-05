@@ -40,7 +40,7 @@ input{
 
 #hanger path,
 #hanger-body path{
-    fill-opacity: 1;
+    fill-opacity: 0;
 }
 
 /* ㅡ */
@@ -65,7 +65,6 @@ input{
 #hanger-body path:nth-child(2){
     stroke-dasharray: 229.46240234375px;
     stroke-dashoffset: 229.46240234375px;
-    fill-opacity: 1;
 }
 
 /* ㅜ */
@@ -80,9 +79,10 @@ input{
     stroke-dashoffset: 260.660888671875px;
 }
 
-#hanger path,
-#hanger-body path{
-    animation: fill-text 2s ease forwards;
+.fill-class{
+    transition: ease 0.5s all 1s;
+    fill-opacity: 1;
+    animation: strokeAnimation 1s ease-in-out forwards;
 }
 
 /* TEXT INPUT */
@@ -123,12 +123,6 @@ input{
 	}
 }
 
-@keyframes fill-text{
-    to{
-        opacity: 0.3;
-    }
-}
-
 /* MEDIA */
 @media screen and (max-width: 1000px){
     #hanger,
@@ -142,6 +136,7 @@ input{
         transform: translate(-100%, -50%);
     }
     #text-answer{
+        font-size: 50px;
         top: 18%; left: 50%;
         transform: translate(-50%, -50%);
     }
