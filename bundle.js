@@ -10,7 +10,7 @@ hangulList = stream.split('\n');
 module.exports = hangulList;
 },{}],2:[function(require,module,exports){
 let wordList = require('./fileRead.js');
-let gameStatus = 0;
+let gameStatus = 1; // 0=incorrect 1=neutral 2=correct
 let gameScore = 0;
 
 //display side variables
@@ -37,32 +37,34 @@ hangBody.forEach((element, index) =>{
 
 // Reading and inputting korean words from a text file
 
-let koreanWord; //the korean word
-let englishWord; //definition of korean word in english
-let guessWord; //value of your input
-let randomWord; //random word generated from the array
+let koreanWord; // the korean word
+let englishWord; // definition of korean word in english
+let guessWord; // value of your input
+let randomWord; // random word generated from the array
+let charArray; // an array of contained characters from the korean word
+let letterArray; // an array of contained characters from the characters in the array above
+let answerArray = []; //an array for the display of answer
 
 let getWord = () =>{
     randomWord = wordList[Math.floor(Math.random() * 1001)];
     guessWord = randomWord.split('\t').map(item => item.trim());
     englishWord = guessWord[1].replace(/,/g, ', ');
     koreanWord = guessWord[0];
+    charArray = Array.from(koreanWord);
     submitForm.reset();
     textAnswer.innerHTML = "";
     textArea.value = "";
     textShow.innerHTML = englishWord;
     for(let i = 0; i < koreanWord.length; i++){
-        textAnswer.innerHTML += "_ ";
+        answerArray[i] = " _"
     }
+    textAnswer.innerHTML = answerArray.join("");
     console.log(`${koreanWord}'s length is ${koreanWord.length}`);
-    console.log(textArea.value);
 }
 getWord();
 
 // Check for language type
 textArea.addEventListener("input", () => {
-    
-    console.log(textArea.value.match(hangulRegex));
     if(!(textArea.value.match(hangulRegex))){ // will perform when inputted text isn't korean
         errorText.style.opacity = "1";
         errorText.innerHTML = "*Please enter Korean characters";
@@ -75,24 +77,31 @@ textArea.addEventListener("input", () => {
 
 // Validate guess with answer with functions
 let announceStatus = () => {
-    if(gameStatus === 1){
+    if(gameStatus === 2){
         console.log("CORRECT");
         textAnswer.innerHTML = koreanWord;
         setTimeout(getWord, 2000);
         gameStatus = 0;
+    }
+    else if(gameStatus === 1){
+        console.log("MATCHED");
     }else{
-        console.log("INCORRECT");
+        console.log("INCORRECT")
         wrongScore++;
         drawSVG();
     }
+    textArea.value = "";
 }
 
 submitForm.addEventListener("submit", () => {
-    console.log(`${textArea.value} === ${koreanWord}?`);
     if(textArea.value === koreanWord){
-        gameStatus = 1;
+        gameStatus = 2;
         gameScore++;
-        console.log(gameScore);
+        console.log(`Current score: ${gameScore}`);
+    }
+    else if(charArray.includes(textArea.value)){
+        gameStatus = 1;
+        matchChar();
     }else{
         gameStatus = 0;
     }
@@ -120,14 +129,15 @@ let drawSVG = () => {
             hangBody[2].style.fillOpacity = '1';
             break;
         case 5: //LOSING STAGE
-            console.log("LOST")
-            endMessage = `YOU LOST WITH ${gameScore} POINTS`;
+            endMessage = `YOU LOST WITH ${gameScore} POINTS \n${koreanWord}`;
             hangBody[3].classList.add("fill-class");
             hangBody[3].style.fillOpacity = '1';
+            textAnswer.style.fontFamily = 'Righteous', 'cursive';
             textAnswer.innerHTML  = endMessage;
             textAnswer.style.fontSize = '20px';
             setTimeout(() => {
-                textAnswer.style.fontSize = '50px';
+                textAnswer.style.fontFamily = 'auto';
+                textAnswer.style.fontSize = '60px';
                 wrongScore = 0, gameScore = 0;
                 getWord();
                 hangBody.forEach((element) =>{
@@ -142,4 +152,16 @@ let drawSVG = () => {
             break;    
     }
 }
+
+// Break word into characters
+matchChar = () => {
+    let findChar = charArray.find((element) => {
+        return element === textArea.value;
+    })
+    answerArray.splice(charArray.indexOf(findChar), 1, `${findChar}`);
+    textAnswer.innerHTML = answerArray.join("");
+    console.log(answerArray);
+    charArray.splice(charArray.indexOf(findChar), 1, "");
+}
+
 },{"./fileRead.js":1}]},{},[2]);
