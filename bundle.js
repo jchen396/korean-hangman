@@ -88,7 +88,8 @@ let announceStatus = () => {
 }
 
 submitForm.addEventListener("submit", () => {
-    if(textArea == textAnswer){
+    console.log(`${textArea.value} === ${koreanWord}?`);
+    if(textArea.value === koreanWord){
         gameStatus = 1;
         gameScore++;
         console.log(gameScore);
