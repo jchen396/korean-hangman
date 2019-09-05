@@ -81,7 +81,6 @@ input{
 
 .fill-class{
     transition: ease 0.5s all 1s;
-    fill-opacity: 1;
     animation: strokeAnimation 1s ease-in-out forwards;
 }
 

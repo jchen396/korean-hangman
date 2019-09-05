@@ -72,11 +72,12 @@ let announceStatus = () => {
     }else{
         console.log("INCORRECT");
         wrongScore++;
+        drawSVG();
     }
 }
 
 submitForm.addEventListener("submit", () => {
-    if(textArea.value.match(textAnswer)){
+    if(textArea == textAnswer){
         gameStatus = 1;
         gameScore++;
         console.log(gameScore);
@@ -89,24 +90,26 @@ submitForm.addEventListener("submit", () => {
 // Display Hangman when entered wrong answer
 let wrongScore = 0;
 let drawSVG = () => {
-    switch(expression){
+    switch(wrongScore){
         case 1:
             hanger[0].classList.add("fill-class");
+            hanger[0].style.fillOpacity = '1';
             break;
         case 2:
             hanger[1].classList.add("fill-class");
+            hanger[1].style.fillOpacity = '1';
             break;
         case 3:
-            hanger-body[0].classList.add("fill-class");
+            hangBody[1].classList.add("fill-class");
+            hangBody[1].style.fillOpacity = '1';
             break;
         case 4:
-            hanger-body[1].classList.add("fill-class");
+            hangBody[2].classList.add("fill-class");
+            hangBody[2].style.fillOpacity = '1';
             break;
         case 5:
-            hanger-body[2].classList.add("fill-class");
-            break;
-        case 6:
-            hanger-body[3].classList.add("fill-class");
+            hangBody[3].classList.add("fill-class");
+            hangBody[3].style.fillOpacity = '1';
             break;    
     }
 }
