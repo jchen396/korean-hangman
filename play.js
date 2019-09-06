@@ -32,10 +32,12 @@ let guessWord; // value of your input
 let randomWord; // random word generated from the array
 let charArray; // an array of contained characters from the korean word
 let letterArray; // an array of contained characters from the characters in the array above
-let answerArray = []; //an array for the display of answer
+let answerArray; //an array for the display of answer
 
 let getWord = () =>{
+    answerArray = [];
     randomWord = wordList[Math.floor(Math.random() * 1001)];
+    console.log(randomWord);
     guessWord = randomWord.split('\t').map(item => item.trim());
     englishWord = guessWord[1].replace(/,/g, ', ');
     koreanWord = guessWord[0];
@@ -45,10 +47,9 @@ let getWord = () =>{
     textArea.value = "";
     textShow.innerHTML = englishWord;
     for(let i = 0; i < koreanWord.length; i++){
-        answerArray[i] = " _"
+        answerArray[i] = " _";
     }
     textAnswer.innerHTML = answerArray.join("");
-    console.log(`${koreanWord}'s length is ${koreanWord.length}`);
 }
 getWord();
 
@@ -65,17 +66,19 @@ textArea.addEventListener("input", () => {
 })
 
 // Validate guess with answer with functions
+let winResult = () => {
+    gameStatus = 2;
+    gameScore++;
+    console.log(`Current score: ${gameScore}`);
+}
 let announceStatus = () => {
     if(gameStatus === 2){
-        console.log("CORRECT");
         textAnswer.innerHTML = koreanWord;
         setTimeout(getWord, 2000);
         gameStatus = 0;
     }
     else if(gameStatus === 1){
-        console.log("MATCHED");
     }else{
-        console.log("INCORRECT")
         wrongScore++;
         drawSVG();
     }
@@ -84,13 +87,15 @@ let announceStatus = () => {
 
 submitForm.addEventListener("submit", () => {
     if(textArea.value === koreanWord){
-        gameStatus = 2;
-        gameScore++;
-        console.log(`Current score: ${gameScore}`);
+        winResult();
     }
     else if(charArray.includes(textArea.value)){
         gameStatus = 1;
         matchChar();
+        console.log(charArray.every((element, index) => element === answerArray[index]));
+        if(charArray.every((element, index) => element === answerArray[index])){
+            winResult();
+        }
     }else{
         gameStatus = 0;
     }
@@ -126,7 +131,7 @@ let drawSVG = () => {
             textAnswer.style.fontSize = '20px';
             setTimeout(() => {
                 textAnswer.style.fontFamily = 'auto';
-                textAnswer.style.fontSize = '60px';
+                textAnswer.style.fontSize = '50px';
                 wrongScore = 0, gameScore = 0;
                 getWord();
                 hangBody.forEach((element) =>{
@@ -149,6 +154,4 @@ matchChar = () => {
     })
     answerArray.splice(charArray.indexOf(findChar), 1, `${findChar}`);
     textAnswer.innerHTML = answerArray.join("");
-    console.log(answerArray);
-    charArray.splice(charArray.indexOf(findChar), 1, "");
 }
