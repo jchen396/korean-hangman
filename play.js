@@ -34,6 +34,7 @@ let randomWord; // random word generated from the array
 let charArray; // an array of contained characters from the korean word
 let answerArray; //an array for the display of answer
 
+// RESET GAME
 let getWord = () =>{
     answerArray = [];
     randomWord = wordList[Math.floor(Math.random() * 1001)];
@@ -71,6 +72,8 @@ let winResult = () => {
     gameScore++;
     displayScore();
 }
+
+// Perform actions based on answer status 
 let announceStatus = () => {
     if(gameStatus === 2){
         textAnswer.innerHTML = koreanWord;
@@ -109,27 +112,33 @@ let drawSVG = () => {
     switch(wrongScore){
         case 1:
             hanger[0].classList.add("fill-class");
-            hanger[0].style.fillOpacity = '1';
             break;
         case 2:
             hanger[1].classList.add("fill-class");
-            hanger[1].style.fillOpacity = '1';
             break;
         case 3:
             hangBody[1].classList.add("fill-class");
-            hangBody[1].style.fillOpacity = '1';
             break;
         case 4:
             hangBody[2].classList.add("fill-class");
-            hangBody[2].style.fillOpacity = '1';
             break;
         case 5: //LOSING STAGE
+            hangBody.forEach((element) =>{
+                    element.style.fillOpacity = '1';  
+            });              
+            hanger.forEach((element) => {
+                    element.style.fillOpacity = '1';
+            });
             endMessage = `YOU LOST WITH ${gameScore} POINTS`;
             hangBody[3].classList.add("fill-class");
             hangBody[3].style.fillOpacity = '1';
             textAnswer.style.fontFamily = 'Righteous', 'cursive';
             textAnswer.innerHTML  = koreanWord;
+            scoreText.innerHTML = endMessage;
+            scoreText.style.color = '#AE00FF';
             setTimeout(() => {
+                scoreText.innerHTML = "";
+                scoreText.style.color = '#2c444d';
                 textAnswer.style.fontFamily = 'auto';
                 wrongScore = 0, gameScore = 0;
                 getWord();

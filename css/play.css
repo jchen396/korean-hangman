@@ -62,7 +62,7 @@ input{
 #hanger-body path:nth-child(1){
     stroke-dasharray: 144.60743713378906px;
     stroke-dashoffset: 144.60743713378906px;
-    fill-opacity: 0;
+    opacity: 0;
 }
 
 #hanger-body path:nth-child(2){
@@ -113,7 +113,7 @@ input{
     font-size: 12px;
     font-family: 'Belleza', sans-serif;
     transition: all 0.3s ease-in-out;
-    color: red;
+    color: rgb(253, 75, 75);
     opacity: 0;
 }
 
