@@ -117,6 +117,14 @@ input{
     opacity: 0;
 }
 
+#show-score{
+    font-family: 'Schoolbell', cursive;    
+    color: #2c444d;
+    opacity: 0.9;
+    text-align: initial;
+    transition: 1s ease all;
+}
+
 /* ANIMATION */
 
 @keyframes strokeAnimation{

@@ -12,6 +12,7 @@ const submitForm = document.querySelector("#submit-form");
 const textShow = document.querySelector('#text-show');
 const textArea = document.querySelector('#guess-input');
 const errorText = document.querySelector('#error-text');
+const scoreText = document.querySelector('#show-score');
 const hangulRegex = /[\uac00-\ud7af]|[\u1100-\u11ff]|[\u3130-\u318f]|[\ua960-\ua97f]|[\ud7b0-\ud7ff][\t\x08]/g;
 
 
@@ -31,7 +32,6 @@ let englishWord; // definition of korean word in english
 let guessWord; // value of your input
 let randomWord; // random word generated from the array
 let charArray; // an array of contained characters from the korean word
-let letterArray; // an array of contained characters from the characters in the array above
 let answerArray; //an array for the display of answer
 
 let getWord = () =>{
@@ -69,7 +69,7 @@ textArea.addEventListener("input", () => {
 let winResult = () => {
     gameStatus = 2;
     gameScore++;
-    console.log(`Current score: ${gameScore}`);
+    displayScore();
 }
 let announceStatus = () => {
     if(gameStatus === 2){
@@ -85,6 +85,7 @@ let announceStatus = () => {
     textArea.value = "";
 }
 
+// When the answer is submitted
 submitForm.addEventListener("submit", () => {
     if(textArea.value === koreanWord){
         winResult();
@@ -123,15 +124,13 @@ let drawSVG = () => {
             hangBody[2].style.fillOpacity = '1';
             break;
         case 5: //LOSING STAGE
-            endMessage = `YOU LOST WITH ${gameScore} POINTS \n${koreanWord}`;
+            endMessage = `YOU LOST WITH ${gameScore} POINTS`;
             hangBody[3].classList.add("fill-class");
             hangBody[3].style.fillOpacity = '1';
             textAnswer.style.fontFamily = 'Righteous', 'cursive';
-            textAnswer.innerHTML  = endMessage;
-            textAnswer.style.fontSize = '20px';
+            textAnswer.innerHTML  = koreanWord;
             setTimeout(() => {
                 textAnswer.style.fontFamily = 'auto';
-                textAnswer.style.fontSize = '50px';
                 wrongScore = 0, gameScore = 0;
                 getWord();
                 hangBody.forEach((element) =>{
@@ -142,16 +141,21 @@ let drawSVG = () => {
                     element.classList.remove("fill-class");
                     element.style.fillOpacity = '0';
                 });
-            }, 2000);
+            }, 5000);
             break;    
     }
 }
 
 // Break word into characters
-matchChar = () => {
+let matchChar = () => {
     let findChar = charArray.find((element) => {
         return element === textArea.value;
     })
     answerArray.splice(charArray.indexOf(findChar), 1, `${findChar}`);
     textAnswer.innerHTML = answerArray.join("");
+}
+
+// Keep score of user's win streaks
+let displayScore = () => {
+    scoreText.innerHTML = `Current Score: ${gameScore}`;
 }
