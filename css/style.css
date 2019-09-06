@@ -119,6 +119,7 @@ a{
 }
 
 .main-text{
+	text-align: start;
 	font-size: 18px;
 	color: #edf0f1;
 	text-align: center;
@@ -133,6 +134,12 @@ a{
 .text-appear{
 	opacity: 0.8;
 	transform: translateY(0px);
+}
+
+#git-icon{
+	position: relative;
+	left: 50%;
+	transform: translate(-50%, 50%);
 }
 
 /* FOOTER */

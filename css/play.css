@@ -9,11 +9,23 @@ input{
     border-radius: 5px;
 }
 /* PLAY SCREEN */
+#warn-text{
+    position: absolute;
+    left: 50%;
+    top: 13%;
+    transform: translateX(-50%);
+    font-family: 'Belleza', sans-serif;
+    color: rgb(6, 255, 6);
+    opacity: 0;
+    animation: popUp ease-out 10s;
+}
+
 .play-screen{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
+
 
 .display-container{
     width: 240px; height: 200px;
@@ -126,6 +138,10 @@ input{
 }
 
 /* ANIMATION */
+@keyframes popUp{
+    20% {opacity: 1;}
+    80% {opacity: 0;}
+}
 
 @keyframes strokeAnimation{
 	to{
@@ -135,6 +151,10 @@ input{
 
 /* MEDIA */
 @media screen and (max-width: 1000px){
+    #warn-text{
+        top: 85%;
+        text-align: center;
+    }
     #hanger,
     #hanger-body{
         position: absolute;
